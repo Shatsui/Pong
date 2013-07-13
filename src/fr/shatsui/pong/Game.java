@@ -88,7 +88,7 @@ public class Game {
 					god_bat.getY() <= ball.getY() &&
 					god_bat.getY()+god_bat.getHeight() >= ball.getY()){
 				ball.setDx(-1);
-				if(ball.getY() < 480/2){
+				if(ball.getY() < 480/2){6
 					ball.setDy(inverse(ball.getDy()));
 				}	
 			}
@@ -97,8 +97,6 @@ public class Game {
 				ball.kill();
 			if(ball.getX() > 640+12)
 				ball.kill();
-				
-			God.goToBall(ball, god_bat);
 			
 			ball.update();
 			
