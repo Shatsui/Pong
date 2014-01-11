@@ -7,7 +7,7 @@ import static org.lwjgl.opengl.GL11.glVertex2i;
 
 import java.awt.Rectangle;
 
-public class Bat extends Entity{
+public class Bat extends Entity {
 
 	public Bat(int x, int y, int width, int height) {
 		super(x, y, width, height);
