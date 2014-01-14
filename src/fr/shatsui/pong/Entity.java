@@ -2,7 +2,7 @@ package fr.shatsui.pong;
 
 import java.awt.Rectangle;
 
-public class Entity {
+public abstract class Entity {
 	
 	protected int x;
 	protected int y;
@@ -99,4 +99,6 @@ public class Entity {
         this.x += dx*this.speed;
         this.y += dy*this.speed;
     }
+
+    public abstract void draw();
 }
