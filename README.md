@@ -6,8 +6,8 @@ Simple Pong game made in java using the lwjgl librairy
 Links
 =====
 
-  - Lwjgl : lwjgl.org
-  - Java : java.com
+  - Lwjgl : http://lwjgl.org
+  - Java : http://java.com
 
 Contribuing
 ===========
