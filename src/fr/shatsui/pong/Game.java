@@ -21,12 +21,6 @@ public class Game {
 	public Game(){
 		setUpGl();
         setUpObjects();
-		while(!Display.isCloseRequested()) {
-			glClear(GL_COLOR_BUFFER_BIT);
-			update();
-			Display.update();
-			Display.sync(60);
-		} 
 		Display.destroy();
 		System.exit(0);
 	}
@@ -123,7 +117,12 @@ public class Game {
         ball.draw();
     }
 
-	public static void main(String[] args){
-		new Game(); 
-	}
+    public void launch() {
+        while(!Display.isCloseRequested()) {
+            glClear(GL_COLOR_BUFFER_BIT);
+            update();
+            Display.update();
+            Display.sync(60);
+        }
+    }
 }

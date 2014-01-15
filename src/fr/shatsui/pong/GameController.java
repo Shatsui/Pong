@@ -18,9 +18,16 @@ public class GameController {
         logger.info("OS : " + System.getProperty("os.name") + " (" + System.getProperty("os.version") + ") " + System.getProperty("os.arch"));
         logger.info("Java : " + System.getProperty("java.version") + " / " + System.getProperty("java.vendor"));
         logger.info("Started new Game v" + VERSION + " with OpenGL : " + GL_VERSION);
+        game.launch();
     }
 
     public void switchTo(GameState state) {
         this.state = state;
+    }
+
+    public static void main(String[] args) {
+        Game game = new Game();
+        GameController app = new GameController(game);
+        app.switchTo(GameState.MENU);
     }
 }
