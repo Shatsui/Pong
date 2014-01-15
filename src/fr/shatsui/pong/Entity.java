@@ -96,8 +96,8 @@ public abstract class Entity {
     }
     
     public void update(){
-        this.x += dx*this.speed;
-        this.y += dy*this.speed;
+        this.x += dx * this.speed;
+        this.y += dy * this.speed;
     }
 
     public abstract void draw();

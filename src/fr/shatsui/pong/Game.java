@@ -66,15 +66,6 @@ public class Game {
         ai2 = new GodBat(bat, ball);
     }
 
-    private void drawLine(int width) {
-        glBegin(GL_QUADS);
-            glVertex2i(WIDTH / 2, 0);
-            glVertex2i(WIDTH / 2 + width / 2, 0);
-            glVertex2i(WIDTH / 2 + width / 2, HEIGHT);
-            glVertex2i(WIDTH / 2, HEIGHT);
-        glEnd();
-    }
-
     private void input() {
         if(Keyboard.isKeyDown(Keyboard.KEY_DOWN) && (bat.getY() + bat.getHeight()) <= HEIGHT){
             bat.update(0,1);
@@ -94,7 +85,6 @@ public class Game {
     }
 
     public void update() {
-        drawLine(15);
         input();
 
         if(ball.getY() < 1)

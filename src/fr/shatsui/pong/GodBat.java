@@ -1,8 +1,5 @@
 package fr.shatsui.pong;
 
-/**
- * Created by Shatsui on 11/01/14.
- */
 public class GodBat extends Thread {
 
     private Bat bat;
