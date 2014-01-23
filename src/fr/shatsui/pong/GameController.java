@@ -1,15 +1,14 @@
 package fr.shatsui.pong;
 
-import org.apache.log4j.Logger;
-import static org.lwjgl.opengl.GL11.*;
+        import org.apache.log4j.Logger;
+        import static org.lwjgl.opengl.GL11.*;
 
 public class GameController {
 
     private Game game;
     private Logger logger;
     private GameState state;
-
-    private static final String WINDOW_NAME = "Snake";
+;
     private static final String VERSION = "0.1";
 
     public GameController(Game game) {
@@ -26,8 +25,12 @@ public class GameController {
     }
 
     public static void main(String[] args) {
-        Game game = new Game();
+        Game game = new Game(640, 480);
         GameController app = new GameController(game);
         app.switchTo(GameState.MENU);
+    }
+
+    public static Logger getLogger() {
+        return Logger.getLogger(Game.class);
     }
 }

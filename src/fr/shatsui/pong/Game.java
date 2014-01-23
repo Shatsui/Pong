@@ -1,16 +1,18 @@
 package fr.shatsui.pong;
 
-import static org.lwjgl.opengl.GL11.*;
-
+import org.apache.log4j.Logger;
 import org.lwjgl.LWJGLException;
-import org.lwjgl.input.*;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
+import static org.lwjgl.opengl.GL11.*;
 
 public class Game {
 
     private static int WIDTH = 640;
     private static int HEIGHT = 480;
+
+    private Logger logger = GameController.getLogger();
 
 	Bat bat = new Bat(10,480/2-75/2,12,75);
 	Bat god_bat = new Bat(620,480/2-75/2,12,75);
@@ -18,11 +20,9 @@ public class Game {
     GodBat ai1;
     GodBat ai2;
 	
-	public Game(){
-		setUpGl();
-        setUpObjects();
-		Display.destroy();
-		System.exit(0);
+	public Game(int width, int height) {
+        WIDTH = width;
+        HEIGHT = height;
 	}
 	
 	public int inverse(int tar){
@@ -34,6 +34,10 @@ public class Game {
 	}
 
     public void setUpGl() {
+        /** Create & Show a display frame
+         * @since v0.1
+         * @see Game#launch()
+         */
         try {
             Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
             Display.setTitle("Pong, You vs God");
@@ -48,6 +52,7 @@ public class Game {
         glLoadIdentity();
         glOrtho(0, WIDTH, HEIGHT, 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
+        logger.info("Displayed the Game frame");
     }
 
     public void setUpObjects() {
@@ -58,6 +63,7 @@ public class Game {
         ball.setDy(1);
         ai1 = new GodBat(god_bat, ball);
         ai2 = new GodBat(bat, ball);
+        logger.info("Created the objects");
     }
 
     private void input() {
@@ -118,11 +124,17 @@ public class Game {
     }
 
     public void launch() {
+        setUpGl();
+        setUpObjects();
+        logger.info("Launching the game (" + WIDTH + "x" + HEIGHT + ")");
         while(!Display.isCloseRequested()) {
             glClear(GL_COLOR_BUFFER_BIT);
             update();
             Display.update();
             Display.sync(60);
         }
+        Display.destroy();
+        logger.info("Exiting the game with 0 exit code");
+        System.exit(0);
     }
 }
